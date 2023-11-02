@@ -7,7 +7,7 @@ describe("Cadastro", () => {
     cy.visit("/");
   });
 
-  it("Cadastro com sucesso", () => {
+  it.only("Cadastro com sucesso", () => {
     telaCadastro.clicaEmRegistrar()
     telaCadastro.inputEmail("teste@teste.com")
     telaCadastro.inputNome("João Da Silva")

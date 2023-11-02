@@ -1,100 +1,78 @@
 const elements = require('../elements/tela-login.elements').ElementsLogin
 
-
 class telaLogin {
-    inserirEmaileSenhaValidos(){
-        cy.login(Cypress.env("email"), Cypress.env("senha"));
+    preencheCampoEmail(){
+        cy.get(elements.inputEmail).type("teste@teste.com")
     }
 
-    inputEmailEmBranco(){
+    preencheCampoSenha(){
+        cy.get(elements.inputSenha).type("Teste123@")
+    }
+
+    preencheCampoEmailInvalido(){
+        cy.get(elements.inputEmail).type("teste@co")
+    }
+
+    preencheCampoSenhaInvalid(){
+        cy.get(elements.inputSenha).type("1223")
+    }
+
+    clicaBtnAcessar(){
+        cy.get(elements.btnAcessar).click()
+    }
+
+    campoEmailEmBranco(){
         cy.get(elements.inputEmail).clear()
     }
 
-    inputEmail(email){
-        cy.get(elements.inputEmail).type(email)
+    campoSenhaEmBranco(){
+        cy.get(elements.inputSenha).clear()
     }
 
-    inputPassword(password){
-        cy.get(elements.inputPassword).type(password)
+    preencheCampoEmailNaoCadastrado(){
+        cy.get(elements.inputEmail).type("teste131249721841294@teste.com")
     }
 
-    inputPasswordEmBranco(){
-        cy.get(elements.inputPassword).clear()
-    }
-
-    clickBtnAcessar(){
-        cy.get(elements.buttonEntrar).click()
-    }
-
-    
-    validarLabelUser(){
-        cy.get(".name > b")
-        .invoke("text")
-        .should("not.be.empty")
-        cy.url().should("include", "/");
-
-        cy.wait(2000)
-        cy.screenshot()
-    }
-
-    validarAlertEmailInvalid(){
-        cy.get(elements.alertErroLoginUser)
+    validarAlertLabel(){
+        cy.get(elements.msgAlertLabel)
         .should("exist")
-        .and("contain", "Erro no login do usuário.");
+        .and("contain", "Formato inválido");
 
         cy.wait(2000)
         cy.screenshot()
     }
 
-    validarAlertEmailBlank(){
-        cy.get(elements.alertEmailObrigatorio)
+    validarAlertModal(){
+        cy.get(elements.msgAlertModal)
         .should("exist")
-        .and("contain", "Obrigatório.");
+        .and("contain", "Usuário ou senha inválido.");
 
         cy.wait(2000)
         cy.screenshot()
     }
 
-    validarAlertPasswordBlank(){
-        cy.get(elements.alertPasswordObrigatorio)
+    validarAlertCampoObrigatorio(){
+        cy.get(elements.msgAlertLabel)
         .should("exist")
-        .and("contain", "Obrigatório.");
+        .and("contain", "É campo obrigatório");
 
         cy.wait(2000)
         cy.screenshot()
     }
 
-    validarAlertPasswordInvalid(){
-        cy.get(".alert")
+    validarTxtUser(){
+        cy.get(elements.txtUser)
         .should("exist")
-        .and("contain", "Erro no login do usuário.");
+        .and("contain", "Olá Mari QA,");
 
         cy.wait(2000)
         cy.screenshot()
     }
 
-    validarAlertLogout(){
-        cy.get(elements.textLogout)
+    validarMsgWelcome(){
+        cy.get(elements.msgWelcome)
         .should("exist")
-        .and("contain", "Logout")
-
-        cy.wait(2000)
-        cy.screenshot()
-    }
-
-    validarMsgLogout(){
-        cy.get(elements.textMsgLogout)
-        .should("exist")
-        .and('contain', 'Deseja realmente sair do Comunique-se 360?')
-
-        cy.wait(2000)
-        cy.screenshot()
-    }
-
-    validarButtonEntrar(){
-        cy.get(elements.buttonEntrar)
-        .should("be.visible")
-        .and("contain", "Entrar")
+        .and("contain", "bem vindo ao BugBank :)");
 
         cy.wait(2000)
         cy.screenshot()
