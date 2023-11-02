@@ -5,3 +5,4 @@
 /cypress/logs/
 cypress.env.json
 node_modules
+package-lock.jason
