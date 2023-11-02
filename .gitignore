@@ -1,0 +1,8 @@
+/cypress/videos/
+/cypress/screenshots/
+/cypress/results/
+/cypress/fixtures/
+/cypress/logs/
+cypress.env.json
+node_modules
+package-lock.jason
