@@ -7,3 +7,6 @@ cypress.env.json
 node_modules
 package-lock.jason
 cypress.config.js
+
+**/node_modules
+js/*.js
