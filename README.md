@@ -4,6 +4,7 @@ Este é um projeto de automação de testes usando o Cypress com Page Objects, c
 
 ## Funcionalidades Automatizadas 🤖
 - **Cadastro**
+- **Login**
 
 ## Tecnologias Utilizadas 💻
 As principais tecnologias utilizadas:
